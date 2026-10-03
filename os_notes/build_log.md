@@ -108,3 +108,6 @@ OS/
 ├── hello.asm
 ├── hello.o
 └── os_notes/
+> created instruction for multiboot header
+>also reserved 16bit memory for stack
+> pointed the stack pointer towards stack_top.
