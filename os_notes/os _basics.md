@@ -648,3 +648,7 @@ ok we ue
 .data- initialized data
 .bss-it gives us the required space for stack(uninitialized data).
 .text- it stores instruction and code.
+# whT IS AN ISO file?
+well in past time it was used to store CD and DVD data or play them
+now we have virtual ISO fles tht can access OS info meaning it tells grub to
+recognize the kernel.and stores  its information.(GRUB.cfg)
