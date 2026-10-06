@@ -1,3 +1,7 @@
 *.o
 *.elf
 *.iso
+<<<<<<< HEAD
+=======
+*.png
+>>>>>>> 6744e66 ( wrote in kernel using VGA-(6/10/26)

@@ -7,3 +7,4 @@ mov source,destination(important)
  
  >.skip - use to reserve memeory for stack
  >.align - used to set boundries between memory spaces 
+ >called kernel entry today;

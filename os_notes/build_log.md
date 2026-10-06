@@ -111,3 +111,115 @@ OS/
 > created instruction for multiboot header
 >also reserved 16bit memory for stack
 > pointed the stack pointer towards stack_top.
+# 4/10/26
+finally loaded the kernel through kernel still cant type though...
+boot.asm
+   ↓
+Assembler
+   ↓
+boot.o
+   ↓
+Linker + linker.ld
+   ↓
+kernel.elf
+   ↓
+GRUB
+   ↓
+Bootable ISO
+   ↓
+QEMU
+   ↓
+GNU GRUB menu
+
+Our bootstrap Assembly currently handles:
+
+Multiboot v1 header
+Stack reservation
+Stack pointer setup
+Kernel entry point
+Halting the CPU after startup
+>linker script 
+used it well basically its job its to tell -
+where the kernel starts
+which symbol is the entry point
+how sections are arranged
+
+>problems faced
+our  multiboot header was not taken as the part of the kernel image
+so we changed its flag then it was allocatable to the loader.
+
+second prblm was qemu failed to regognize or boot our OS
+so we used
+sudo apt install grub-pc-bin
+this command now broadend it search for our kernel  image.
+final project folder for today
+OS/
+├── boot/
+├── kernel/
+├── linker/
+├── kernel.elf
+└── isodir/
+    └── boot/
+        └── grub/
+            └── grub.cfg
+
+
+1. Why can't we use normal main() as our kernel entry?
+2. Why do we need kernel_main()?
+3. Why is a valid stack required before calling C?
+4. Why are boot.o and kernel.o linked together?
+5. What does -ffreestanding mean?
+
+> its because its a C function tht will be compiled by the OS we are using but tachnically we dont have an os so we want our C code to not recognize windows or linux.basically we have to make our own entry point.
+
+>stack is needed because it is part of our memory our c program should be stored in a stack of our kernel means then only it will implement changes in our kernel.
+
+> those obbject files are linked together by linker because thts how our machine will understand the program the linker dont know our OS and kernel entry point..
+
+> ffreestanding - there is no OS under our kernel so if we execute C program withou this it will think there is an OS runtime environment like window and linux.
+
+# 6/10/26
+1. Kernel boot flow understood
+
+Understood the basic flow:
+
+GRUB
+ ↓
+boot.asm
+ ↓
+kernel_entry()
+ ↓
+kernel.c
+ ↓
+VGA memory
+ ↓
+Screen output
+2. Kernel C became freestanding
+
+Learned that kernel code cannot depend on normal hosted C libraries like:
+stdio.h
+stdlib.h
+So the kernel entry function is kept simple and freestanding.
+
+3. VGA Text Mode
+
+Learned that screen output can be written directly to:
+0xB8000
+This is VGA text-mode video memory.
+Each screen position uses 16 bits:
+
+[ 8-bit attribute ][ 8-bit character ]
+
+For example:
+0x0F48
+means the character H with the selected text attribute.
+
+4. Pointers and array-style access
+
+Understood that a pointer can be accessed using:
+ptr[i]
+which is conceptually:
+*(ptr + i)
+Also learned that the pointer type determines how far i moves in memory.
+>problems faces- QEMU wasnt loading turns out i wrote the code wrong ! 
+
