@@ -222,4 +222,8 @@ which is conceptually:
 *(ptr + i)
 Also learned that the pointer type determines how far i moves in memory.
 >problems faces- QEMU wasnt loading turns out i wrote the code wrong ! 
-
+# 8/10/26
+so we learned today tht we can make methods directly to make 
+our life easy everytime we dont have to define and then loop the string
+> we can simply make a method print and then call it everytime
+> 
