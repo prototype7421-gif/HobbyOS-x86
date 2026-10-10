@@ -227,3 +227,10 @@ so we learned today tht we can make methods directly to make
 our life easy everytime we dont have to define and then loop the string
 > we can simply make a method print and then call it everytime
 > 
+# 10/10/26
+today we refined the print function']
+how??
+> well wt if the kernel screen is fully occupied (grub ususally have screen size of 25 * 80)
+we shouldnt exceed it so thts why we add scroll feature 
+as soon as it writes 25 lines...the first line is then omitted and every line shifts one above.
+>also made an mechasnism of writing things in new line.
